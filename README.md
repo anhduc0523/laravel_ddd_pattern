@@ -7,59 +7,67 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## 🚀 Current features
+- Simple CRUD for `User` entity.
+- Set up a simple domain driven design structure.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📘 Introduction
+This is a simple project for apply domain driven design in Laravel.
+In this project, i try to apply the DDD concept in Laravel, and i use the mapper, dto and repository pattern to make the code more clean and easy to maintain.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Some of my inspirations have been these remarkable articles:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [Laravel DDD by Orphail](https://github.com/Orphail/laravel-ddd/tree/master).
 
-## Learning Laravel
+## 🤔 Why use this approach?
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Okay, let’s suppose that you want to program an app with Laravel that you expect to be mid-to-large size. You may have been working on some of these big projects but dealt with bloated controllers, monstrous models, etc. So for this one, you want to keep your sanity.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+You hear about clean architecture and would like to try it, but its practices kind of break with the Laravel Way™ of building things, so either you have to stick with Laravel or create almost all the core functionalities with that permanent feeling of reinventing the wheel at every step.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+I don’t have a perfect solution for this, and I haven’t heard of anyone having it, but I found a way that allows me to build things by having a more controlled planning and structure of my project despite having to deal with some extra boilerplate.
 
-## Laravel Sponsors
+## 📁 Structure particularities
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **app/Object/Domain**: This is where the domain logic is stored. It’s divided into three main folders: Entities, Repositories, and Services.
+- **app/Object/Presentation/Http/Controllers**: This is where the controllers are stored. They are responsible for handling the HTTP requests and responses.
+- **app/Object/Presentation/Http/Requests**: This is where the form requests are stored. They are responsible for validating the incoming requests.
+- **app/Object/Presentation/Routes**: This is where the routes are stored. They are responsible for mapping the HTTP requests to the controllers for each object.
+- **app/Object/Infrastructure**: This is where the infrastructure logic is stored. It’s divided into two main folders: Providers, Mappers and Repositories.
+- **app/Application**: This is where the application logic is stored. It’s divided into two main folders: DTOs and Mappers.
+- **app/Application/UseCases**: This is where the use cases are stored. They are responsible for orchestrating the domain logic and the infrastructure logic.
 
-### Premium Partners
+The main structure is like this:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```
+...
+├── User (Object)
+│   ├── Domain
+│   │   ├── Models/Entities
+│   │   ├── Repositories
+│   │   └── Services
+│   ├── Application
+│   │   ├── DTOs
+│   │   ├── Mappers
+│   │   └── UseCases
+│   ├── Presentation
+│   │   ├── Http
+│   │   │   ├── Controllers
+│   │   │   ├── Requests
+│   │   ├── Routes
+│   │   ├── Trait
+│   └── Infrastructure
+│       ├── Mappers
+│       ├── Providers
+│       └── Repositories
+...
+```
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 📦 Installation
+1. ```composer install```
+2. ```cp .env.example .env```
+3. ```php artisan key:generate```
+4. (optional) Set database connection in the ```.env``` variables that start with ```DB_*``` and run ```php artisan migrate```
 
 ## License
 
