@@ -2,8 +2,8 @@
 
 namespace App\User\Presentation\Http\Controllers\Api;
 
+use App\Console\Base\Controller;
 use App\User\Domain\Services\UserService;
-use App\User\Presentation\Http\Controllers\Controller;
 use App\User\Presentation\Http\Requests\CreateUserRequest;
 use App\User\Presentation\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\JsonResponse;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\User\Presentation\Trait;
+namespace App\Console\Base;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;

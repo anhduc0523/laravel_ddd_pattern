@@ -2,8 +2,8 @@
 
 namespace {{ namespace }};
 
+use App\Console\Base\Controller;
 use {{ boundedContext }}\Domain\Services\{{ domain }}Service;
-use {{ namespace }}\Controllers\Controller;
 use {{ namespace }}\Requests\Create{{ domain }}Request;
 use {{ namespace }}\Requests\Update{{ domain }}Request;
 use Illuminate\Http\JsonResponse;
