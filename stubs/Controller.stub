@@ -1,0 +1,52 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ boundedContext }}\Domain\Services\{{ domain }}Service;
+use {{ namespace }}\Controllers\Controller;
+use {{ namespace }}\Requests\Create{{ domain }}Request;
+use {{ namespace }}\Requests\Update{{ domain }}Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
+
+class {{ class }} extends Controller
+{
+    public function __construct(
+        private readonly {{ domain }}Service ${{ domain_lc }}Service,
+    ) {}
+
+    public function store(Create{{ domain }}Request $request) : JsonResponse
+    {
+        ${{ domain_lc }} = $this->{{ domain_lc }}Service->create{{ domain }}($request->validated());
+
+        return $this->successResponse(${{ domain_lc }}, '{{ domain }} created successfully');
+    }
+
+    public function get{{ domain }}ById(int $id) : JsonResponse
+    {
+        ${{ domain_lc }} = $this->{{ domain_lc }}Service->get{{ domain }}ById($id);
+
+        return $this->successResponse(${{ domain_lc }}, '{{ domain }} fetched successfully');
+    }
+
+    public function get{{ domain }}ByEmail(string $email) : JsonResponse
+    {
+        ${{ domain_lc }} = $this->{{ domain_lc }}Service->get{{ domain }}ByEmail($email);
+
+        return $this->successResponse(${{ domain_lc }}, '{{ domain }} fetched successfully');
+    }
+
+    public function update(Update{{ domain }}Request $request, int $id) : JsonResponse
+    {
+        ${{ domain_lc }} = $this->{{ domain_lc }}Service->update{{ domain }}($id, $request->validated());
+
+        return $this->successResponse(${{ domain_lc }}, '{{ domain }} updated successfully');
+    }
+
+    public function delete(int $id) : Response
+    {
+        $this->{{ domain_lc }}Service->delete{{ domain }}($id);
+
+        return $this->noContentResponse();
+    }
+}
