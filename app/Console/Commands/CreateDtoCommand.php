@@ -45,7 +45,7 @@ class CreateDtoCommand extends GeneratorCommand
      */
     protected function getStub(): string
     {
-        return base_path('stubs/Dto.stub');
+        return resource_path('stubs/Dto.stub');
     }
 
     /**

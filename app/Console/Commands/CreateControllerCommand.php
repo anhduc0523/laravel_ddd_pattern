@@ -45,7 +45,7 @@ class CreateControllerCommand extends GeneratorCommand
      */
     protected function getStub(): string
     {
-        return base_path('stubs/Controller.stub');
+        return resource_path('stubs/Controller.stub');
     }
 
     /**
