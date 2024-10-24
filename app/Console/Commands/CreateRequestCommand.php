@@ -35,6 +35,14 @@ class CreateRequestCommand extends GeneratorCommand
      */
     public function handle(): void
     {
+        $name = $this->qualifyClass($this->getNameInput());
+
+        if ($this->alreadyExists($name)) {
+            $this->error($this->type . ' already exists!');
+
+            return;
+        }
+
         parent::handle();
     }
 
