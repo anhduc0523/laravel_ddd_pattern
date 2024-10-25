@@ -3,9 +3,9 @@
 namespace {{ namespace }};
 
 use App\Console\Base\Controller;
-use {{ boundedContext }}\Domain\Services\{{ domain }}Service;
-use {{ namespace }}\Requests\Create{{ domain }}Request;
-use {{ namespace }}\Requests\Update{{ domain }}Request;
+use App\{{ domain }}\Domain\Services\{{ domain }}Service;
+use App\{{ domain }}\Presentation\Http\Requests\Create{{ domain }}Request;
+use App\{{ domain }}\Presentation\Http\Requests\Update{{ domain }}Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
@@ -25,13 +25,6 @@ class {{ class }} extends Controller
     public function get{{ domain }}ById(int $id) : JsonResponse
     {
         ${{ domain_lc }} = $this->{{ domain_lc }}Service->get{{ domain }}ById($id);
-
-        return $this->successResponse(${{ domain_lc }}, '{{ domain }} fetched successfully');
-    }
-
-    public function get{{ domain }}ByEmail(string $email) : JsonResponse
-    {
-        ${{ domain_lc }} = $this->{{ domain_lc }}Service->get{{ domain }}ByEmail($email);
 
         return $this->successResponse(${{ domain_lc }}, '{{ domain }} fetched successfully');
     }

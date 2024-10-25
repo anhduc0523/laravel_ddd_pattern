@@ -6,28 +6,29 @@ use Illuminate\Console\GeneratorCommand;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Symfony\Component\Console\Input\InputArgument;
 
-class CreateRequestCommand extends GeneratorCommand
+class CreateModelCommand extends GeneratorCommand
 {
     /**
      * The name and signature of the console command.
      *
+     * @example php artisan make:model User
      * @var string
      */
-    protected $signature = 'make:request {name} {boundedContext}';
+    protected $signature = 'make:model {name}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new request with a custom stub for Domain-Driven Design';
+    protected $description = 'Create a new model class';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'Dto';
+    protected $type = 'Model';
 
     /**
      * Execute the console command.
@@ -53,7 +54,7 @@ class CreateRequestCommand extends GeneratorCommand
      */
     protected function getStub(): string
     {
-        return resource_path('stubs/Request.stub');
+        return resource_path('stubs/Model.stub');
     }
 
     /**
@@ -64,9 +65,9 @@ class CreateRequestCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace): string
     {
-        $boundedContext = $this->argument('boundedContext');
+        $name = $this->argument('name');
 
-        return "App\\$boundedContext\\Presentation\\Http\\Requests";
+        return "$rootNamespace\\$name\\Domain\\Models";
     }
 
     /**
@@ -94,8 +95,7 @@ class CreateRequestCommand extends GeneratorCommand
     protected function getArguments(): array
     {
         return [
-            ['name', InputArgument::REQUIRED, 'The name of the dto'],
-            ['boundedContext', InputArgument::REQUIRED, 'The bounded context for the controller (e.g., User)'],
+            ['name', InputArgument::REQUIRED, 'The name of the model'],
         ];
     }
 }
