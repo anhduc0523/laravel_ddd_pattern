@@ -1,0 +1,46 @@
+<?php
+
+namespace {{ namespace }}\Infrastructure\Repositories;
+
+use {{ namespace }}\Domain\Models\{{ domain }};
+use {{ namespace }}\Domain\Repositories\{{ domain }}RepositoryInterface;
+use Exception;
+
+class {{ domain }}Repository implements {{ domain }}RepositoryInterface
+{
+    public function create(array $data): {{ domain }}
+    {
+        return {{ domain }}::create($data);
+    }
+
+    public function findById(int $id): ?{{ domain }}
+    {
+        return {{ domain }}::find($id);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function update(int $id, array $data): bool
+    {
+        ${{ domain_lc }} = $this->findById($id);
+        if (!${{ domain_lc }}) {
+            throw new Exception('{{ domain }} not found');
+        }
+
+        return ${{ domain_lc }}->update($data);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function delete(int $id): void
+    {
+        ${{ domain_lc }} = $this->findById($id);
+        if (!${{ domain_lc }}) {
+            throw new Exception('{{ domain }} not found');
+        }
+
+        ${{ domain_lc }}->delete();
+    }
+}

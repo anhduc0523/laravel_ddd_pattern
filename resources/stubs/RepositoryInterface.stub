@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }}\Domain\Repositories;
+
+use {{ namespace }}\Domain\Models\{{ domain }};
+
+interface {{ domain }}Interface
+{
+    public function create(array $data): {{ domain }};
+    public function findById(int $id): ?{{ domain }};
+    public function update(int $id, array $data): bool;
+    public function delete(int $id): void;
+}
