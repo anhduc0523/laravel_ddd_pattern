@@ -1,0 +1,20 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\{{ domain }}\Application\Mappers\{{ domain }}MapperInterface;
+use App\{{ domain }}\Domain\Models\{{ domain }};
+use App\{{ domain }}\Domain\Repositories\{{ domain }}RepositoryInterface;
+
+readonly class {{ class }}
+{
+    public function __construct(
+        private readonly {{ domain }}RepositoryInterface ${{ domain_lc }}Repository,
+        private readonly {{ domain }}MapperInterface ${{ domain_lc }}Mapper,
+    ) {}
+
+    public function execute()
+    {
+
+    }
+}

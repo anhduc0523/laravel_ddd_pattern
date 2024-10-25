@@ -4,7 +4,7 @@ namespace {{ namespace }}\Domain\Repositories;
 
 use {{ namespace }}\Domain\Models\{{ domain }};
 
-interface {{ domain }}Interface
+interface {{ domain }}RepositoryInterface
 {
     public function create(array $data): {{ domain }};
     public function findById(int $id): ?{{ domain }};
