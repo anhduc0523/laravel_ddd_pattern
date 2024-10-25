@@ -1,0 +1,45 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\{{ domain }}\Application\DTO\{{ domain }}Dto;
+use App\{{ domain }}\Application\UseCases\Create{{ domain }}UseCase;
+use App\{{ domain }}\Application\UseCases\Delete{{ domain }}UseCase;
+use App\{{ domain }}\Application\UseCases\Get{{ domain }}ByIdUseCase;
+use App\{{ domain }}\Application\UseCases\Update{{ domain }}UseCase;
+use App\{{ domain }}\Domain\Models\{{ domain }};
+
+readonly class {{ class }}
+{
+    public function __construct(
+        private Create{{ domain }}UseCase     $create{{ domain }}UseCase,
+        private Get{{ domain }}ByIdUseCase    $get{{ domain }}ByIdUseCase,
+        private Update{{ domain }}UseCase     $update{{ domain }}UseCase,
+        private Delete{{ domain }}UseCase     $delete{{ domain }}UseCase
+    ) {}
+
+    public function create{{ domain }}(array $data): {{ domain }}
+    {
+        ${{ domain_lc }}DTO = {{ domain }}Dto::fromArray($data);
+
+        return $this->create{{ domain }}UseCase->execute(${{ domain_lc }}DTO);
+    }
+
+    public function get{{ domain }}ById(int $id): array
+    {
+        return $this->get{{ domain }}ByIdUseCase->execute($id);
+    }
+
+    public function update{{ domain }}(int $id, array $data): array
+    {
+        ${{ domain_lc }}DTO = {{ domain }}Dto::fromArray($data);
+        $this->update{{ domain }}UseCase->execute($id, ${{ domain_lc }}DTO);
+
+        return ${{ domain_lc }}DTO->toArray();
+    }
+
+    public function delete{{ domain }}(int $id): void
+    {
+        $this->delete{{ domain }}UseCase->execute($id);
+    }
+}
