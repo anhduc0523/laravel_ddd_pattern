@@ -1,0 +1,24 @@
+<?php
+
+namespace {{ namespace }}\Infrastructure\Mappers;
+
+use {{ namespace }}\Application\DTO\{{ domain }}Dto;
+use {{ namespace }}\Application\Mappers\{{ domain }}MapperInterface;
+use {{ namespace }}\Domain\Models\{{ domain }};
+
+class {{ domain }}Mapper implements {{ domain }}MapperInterface
+{
+    public function toDTO({{ domain }} ${{ domain_lc }}): {{ domain }}Dto
+    {
+        return new {{ domain }}DTO(
+
+        );
+    }
+
+    public function toDomain({{ domain }}DTO ${{ domain_lc }}DTO): {{ domain }}
+    {
+        return new {{ domain }}([
+
+        ]);
+    }
+}
