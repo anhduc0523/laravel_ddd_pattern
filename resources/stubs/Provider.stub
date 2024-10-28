@@ -1,0 +1,24 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\{{ domain }}\Application\Mappers\{{ domain }}MapperInterface;
+use App\{{ domain }}\Domain\Repositories\{{ domain }}RepositoryInterface;
+use App\{{ domain }}\Infrastructure\Mappers\{{ domain }}Mapper;
+use App\{{ domain }}\Infrastructure\Repositories\{{ domain }}Repository;
+use Illuminate\Support\ServiceProvider;
+
+class {{ class }} extends ServiceProvider
+{
+    public function register() : void
+    {
+        $this->app->bind({{ domain }}RepositoryInterface::class,{{ domain }}Repository::class);
+
+        $this->app->bind({{ domain }}MapperInterface::class, {{ domain }}Mapper::class);
+    }
+
+    public function boot() : void
+    {
+        $this->loadRoutesFrom(__DIR__.'/../../Presentation/Routes/api.php');
+    }
+}
