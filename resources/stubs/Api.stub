@@ -1,0 +1,13 @@
+<?php
+
+use App\{{ domain }}\Presentation\Http\Controllers\Api\{{ domain }}Controller;
+use Illuminate\Support\Facades\Route;
+
+Route::prefix('v1')->group(function () {
+    Route::prefix('{{ domain_lc }}s')->group(function () {
+        Route::post('/', [{{ domain }}Controller::class, 'store']);
+        Route::get('/{id}', [{{ domain }}Controller::class, 'get{{ domain }}ById']);
+        Route::put('/{id}', [{{ domain }}Controller::class, 'update']);
+        Route::delete('/{id}', [{{ domain }}Controller::class, 'delete']);
+    });
+});
